@@ -1,3 +1,22 @@
+# 🍴 Fork Details
+
+💁 Slight changes, removing some stuff that I dislike and fixing some errors I ran into along the way
+
+1. Runs entrypoint as `quakejs` user
+2. Multiple `RUN` Dockerfile statements have been squished into one long chain
+3. `nginx` runs as `quakejs` instead of `root`
+4. Hacky way of bypassing Nginx's inability to serve static files via POST request, fixes `405 Method Not Allowed`
+5. Use entrypoint script to launch nginx and node
+
+The repository this was forked from fixed up reverse proxying so you can expose this QuakeJS server under HTTPS and it will work fine via Caddy or another Nginx instance.
+
+📂 Directories:
+
+- `/var/www/html` - Main QuakeJS web files, symlink to `/quakejs/html` but files can be mounted over and overwritten
+- `/var/www/html/assets` - QuakeJS assets
+
+---
+
 <div align="center">
 
 ![logo](https://github.com/treyyoder/quakejs-docker/blob/master/quakejs-docker.png?raw=true)
